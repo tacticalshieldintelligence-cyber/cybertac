@@ -1,0 +1,214 @@
+/* 1. RESET BÁSICO E ROLAGEM SUAVE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+    scroll-padding-top: 100px; /* Faz a rolagem parar 100px antes de encostar no topo, preservando a visão do título */
+}
+
+/* 2. CORPO DA PÁGINA (Fundo escuro com a coruja) */
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('coruja.png.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #c9d1d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 3. CABEÇALHO */
+header {
+    background-color: rgba(10, 10, 10, 0.6); 
+    border-bottom: 2px solid #00ff41; 
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    color: #ffffff;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+header p {
+    color: #8b949e;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* 4. CAIXA CENTRAL (Isso vai consertar o alinhamento grudado na esquerda) */
+section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgba(15, 15, 15, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    color: #00ff41; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 10px;
+}
+
+/* 5. LISTA DE SERVIÇOS */
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: rgba(20, 20, 20, 0.9);
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-left: 4px solid #00ff41;
+    border-radius: 4px;
+}
+
+li strong {
+    color: #ffffff;
+}
+
+/* 6. FORMULÁRIO DE CONTATO (Isso vai consertar as caixas brancas) */
+.campo {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    color: #c9d1d9;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #00ff41;
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+/* 7. BOTÃO HACKER TÁTICO */
+.btn-tatico {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: transparent; 
+    color: #00ff41; 
+    border: 2px solid #00ff41; 
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-tatico:hover {
+    background-color: #00ff41; 
+    color: #000000; 
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); 
+}
+
+/* 8. RODAPÉ (FOOTER) */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(10, 10, 10, 0.8); /* Fundo bem escuro */
+    border-top: 1px solid #00ff41; /* Linha verde sutil no topo do rodapé */
+    margin-top: 50px;
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+.redes-sociais {
+    margin-top: 15px;
+}
+
+/* Estilo padrão dos links */
+.redes-sociais a {
+    color: #00ff41;
+    text-decoration: none; /* Tira o sublinhado feio padrão dos links */
+    margin: 0 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima do link */
+.redes-sociais a:hover {
+    color: #ffffff; /* Letra fica branca */
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8); /* Ganha um brilho verde neon */
+}
+
+/* Cor da barrinha que separa os links */
+.separador {
+    color: #30363d;
+}
+
+/* 9. MENU DE NAVEGAÇÃO */
+.menu-superior {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #00ff41;
+    position: fixed; /* Prende o menu permanentemente no topo da tela */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o menu fique por cima de todas as imagens e textos */
+}
+
+.menu-superior ul {
+    display: flex;
+    justify-content: center; /* Centraliza os links */
+    list-style: none;
+    padding: 15px 0;
+}
+
+/* Precisamos limpar o design padrão que usamos na lista de serviços para não afetar o menu */
+.menu-superior li {
+    background-color: transparent;
+    border: none;
+    margin: 0 20px;
+    padding: 0;
+}
+
+.menu-superior a {
+    color: #c9d1d9;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.menu-superior a:hover {
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+}
+
+/* Como o menu fica "flutuando" no topo, precisamos dar um espaço no cabeçalho para ele não esconder o título */
+header {
+    margin-top: 60px; 
+}
