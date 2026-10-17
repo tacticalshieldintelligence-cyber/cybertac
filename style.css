@@ -212,3 +212,41 @@ footer {
 header {
     margin-top: 60px; 
 }
+
+/* 10. RESPONSIVIDADE TÁTICA (Telas de Celulares e Tablets) */
+@media (max-width: 768px) {
+    
+    /* 1. Ajuste do Título: Reduzimos o tamanho da fonte para caber na tela */
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+
+    /* 2. Ajuste do Menu: Permite que os links desçam para a linha de baixo se não couberem */
+    .menu-superior ul {
+        flex-wrap: wrap; 
+        padding: 10px 0;
+    }
+
+    .menu-superior li {
+        margin: 5px 10px; 
+    }
+
+    .menu-superior a {
+        font-size: 0.9rem;
+    }
+
+    /* 3. Ajuste das Caixas (Serviços e Formulário): Reduz margens para não espremer o texto */
+    section {
+        margin: 30px 15px; 
+        padding: 20px 15px;
+    }
+
+    /* 4. Ajuste do Freio de Rolagem: Como o menu no celular pode ocupar duas linhas, o freio precisa ser maior */
+    html {
+        scroll-padding-top: 140px; 
+    }
+}
