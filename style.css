@@ -10,9 +10,8 @@ html {
     scroll-padding-top: 100px;
 }
 
-/* 2. CORPO DA PÁGINA (Máxima transparência para destacar a coruja) */
+/* 2. CORPO DA PÁGINA */
 body {
-    /* Reduzimos a sombra sobre a imagem de 0.75 para apenas 0.3 */
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('coruja.webp.jpeg');
     background-size: cover;
     background-position: center;
@@ -35,13 +34,13 @@ body {
     height: 100%;
     z-index: -1; 
     pointer-events: none; 
-    opacity: 0.6; 
+    opacity: 0.8; 
 }
 
-/* 3. CABEÇALHO (Quase invisível) */
+/* 3. CABEÇALHO */
 header {
     background-color: rgba(5, 5, 5, 0.1); 
-    border-bottom: 2px solid #6b8e23; /* Verde Militar */
+    border-bottom: 2px solid #00d2ff; /* Azul Elétrico */
     text-align: center;
     padding: 80px 20px;
     margin-top: 60px;
@@ -51,33 +50,33 @@ header h1 {
     color: #ffffff;
     font-size: 2.8rem;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Sombra preta mais forte para o texto não sumir na imagem */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); 
 }
 
 header p {
-    color: #6b8e23; /* Verde Militar */
+    color: #00d2ff; /* Azul Elétrico */
     margin-top: 10px;
     font-size: 1.2rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
-/* 4. CAIXAS CENTRALIZADAS (Vidro Cristalino) */
+/* 4. CAIXAS CENTRALIZADAS */
 section {
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background-color: rgba(10, 10, 10, 0.25); /* Fundo super transparente */
-    backdrop-filter: blur(4px); /* Desfoque bem menor para ver a imagem através dele */
+    background-color: rgba(10, 10, 10, 0.25); 
+    backdrop-filter: blur(4px); 
     -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(107, 142, 35, 0.3); /* Borda em Verde Militar translúcido */
+    border: 1px solid rgba(0, 210, 255, 0.3); /* Borda em Azul translúcido */
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 h2 {
-    color: #6b8e23; /* Verde Militar */
+    color: #00d2ff; /* Azul Elétrico */
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(107, 142, 35, 0.2);
+    border-bottom: 1px solid rgba(0, 210, 255, 0.2);
     padding-bottom: 10px;
 }
 
@@ -90,7 +89,7 @@ li {
     background-color: rgba(20, 20, 20, 0.25);
     margin-bottom: 15px;
     padding: 15px 20px;
-    border-left: 4px solid #6b8e23; /* Verde Militar */
+    border-left: 4px solid #00d2ff; /* Azul Elétrico */
     border-radius: 4px;
     backdrop-filter: blur(2px);
 }
@@ -118,7 +117,7 @@ input, select, textarea {
     width: 100%;
     padding: 12px;
     background-color: rgba(13, 17, 23, 0.4); 
-    border: 1px solid rgba(107, 142, 35, 0.4); 
+    border: 1px solid rgba(0, 210, 255, 0.4); 
     border-radius: 4px;
     color: #ffffff;
     font-family: inherit;
@@ -128,18 +127,18 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #6b8e23;
-    box-shadow: 0 0 10px rgba(107, 142, 35, 0.4);
+    border-color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
 }
 
-/* 7. BOTÃO TÁTICO MILITAR */
+/* 7. BOTÃO TÁTICO */
 .btn-tatico {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: rgba(107, 142, 35, 0.1); 
-    color: #6b8e23; 
-    border: 2px solid #6b8e23; 
+    background-color: rgba(0, 210, 255, 0.1); 
+    color: #00d2ff; 
+    border: 2px solid #00d2ff; 
     border-radius: 4px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -149,9 +148,9 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-tatico:hover {
-    background-color: #6b8e23; 
-    color: #ffffff; /* Letra branca para contrastar melhor com o verde escuro */
-    box-shadow: 0 0 15px rgba(107, 142, 35, 0.5); 
+    background-color: #00d2ff; 
+    color: #000000; 
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
 }
 
 /* 8. RODAPÉ (FOOTER) */
@@ -159,7 +158,7 @@ footer {
     text-align: center;
     padding: 40px 20px;
     background-color: rgba(5, 5, 5, 0.4); 
-    border-top: 1px solid rgba(107, 142, 35, 0.4); 
+    border-top: 1px solid rgba(0, 210, 255, 0.4); 
     margin-top: 50px;
     color: #8b949e;
     font-size: 0.9rem;
@@ -171,7 +170,7 @@ footer {
 }
 
 .redes-sociais a {
-    color: #6b8e23;
+    color: #00d2ff;
     text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
@@ -181,17 +180,17 @@ footer {
 
 .redes-sociais a:hover {
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(107, 142, 35, 0.8);
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
 }
 
 .separador {
-    color: rgba(107, 142, 35, 0.3);
+    color: rgba(0, 210, 255, 0.3);
 }
 
 /* 9. MENU DE NAVEGAÇÃO */
 .menu-superior {
-    background-color: rgba(5, 5, 5, 0.8); /* Mantemos um pouco escuro para a leitura não sumir quando rolar pela coruja */
-    border-bottom: 1px solid #6b8e23;
+    background-color: rgba(5, 5, 5, 0.8); 
+    border-bottom: 1px solid #00d2ff;
     position: fixed; 
     top: 0;
     width: 100%;
@@ -223,8 +222,8 @@ footer {
 }
 
 .menu-superior a:hover {
-    color: #6b8e23;
-    text-shadow: 0 0 10px rgba(107, 142, 35, 0.5);
+    color: #00d2ff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }
 
 /* 10. RESPONSIVIDADE */
@@ -232,29 +231,23 @@ footer {
     header h1 {
         font-size: 2rem;
     }
-    
     header p {
         font-size: 1rem;
     }
-
     .menu-superior ul {
         flex-wrap: wrap; 
         padding: 10px 0;
     }
-
     .menu-superior li {
         margin: 5px 10px; 
     }
-
     .menu-superior a {
         font-size: 0.9rem;
     }
-
     section {
         margin: 30px 15px; 
         padding: 20px 15px;
     }
-
     html {
         scroll-padding-top: 140px; 
     }
