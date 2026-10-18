@@ -1,0 +1,139 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada de terminais militares/TI */
+}
+
+body {
+    background-color: #0d1117; /* Fundo cinza super escuro */
+    color: #c9d1d9;
+    padding: 40px 20px;
+}
+
+/* O "Papel" do Relatório */
+.folha-relatorio {
+    background-color: #161b22;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+/* CABEÇALHO OFICIAL */
+.cabecalho-tatico {
+    border-bottom: 2px solid #00d2ff;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+/* Protocolo de Cor de Tráfego de Inteligência */
+.classificacao-tlp {
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.tlp-amber { color: #ffbf00; } /* TLP:AMBER - Informação restrita */
+
+.identificacao-operacao h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.identificacao-operacao h2 {
+    color: #00d2ff;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* METADADOS (Tabela do Topo) */
+.tabela-metadados {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+.tabela-metadados th {
+    text-align: left;
+    color: #00d2ff;
+    padding: 8px 0;
+    width: 25%;
+}
+.tabela-metadados td {
+    color: #ffffff;
+    padding: 8px 0;
+    width: 25%;
+}
+
+/* SEÇÕES DE INFORMAÇÃO */
+.bloco-info {
+    margin-bottom: 40px;
+}
+
+.bloco-info h3 {
+    color: #00d2ff;
+    border-left: 4px solid #00d2ff;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(0, 210, 255, 0.05);
+}
+
+.bloco-info p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* TABELAS DE DADOS (OSINT) */
+.tabela-dados {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabela-dados th, .tabela-dados td {
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    padding: 12px;
+    text-align: left;
+}
+
+.tabela-dados th {
+    background-color: rgba(0, 210, 255, 0.1);
+    color: #00d2ff;
+}
+
+.risco-alto { color: #ff5555; font-weight: bold; }
+.risco-critico { background-color: rgba(255, 0, 0, 0.2); color: #ff5555; font-weight: bold; }
+
+/* CAIXA DE ALERTA E LISTAS */
+.caixa-alerta {
+    background-color: rgba(0, 210, 255, 0.05);
+    border: 1px dashed #00d2ff;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.lista-tática li {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    line-height: 1.5;
+}
+
+/* RODAPÉ E AVISOS LEGAIS */
+.rodape-relatorio {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 210, 255, 0.3);
+    text-align: center;
+}
+
+.aviso-legal {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #8b949e;
+    font-style: italic;
+}

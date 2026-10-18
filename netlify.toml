@@ -1,0 +1,3 @@
+[[edge_functions]]
+  function = "auth"
+  path = "/relatorio.html" # Bloqueia apenas o acesso a esta página específica
