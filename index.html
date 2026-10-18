@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Menu de Navegação Fixo -->
+<!-- Tela para o efeito de pontos/pixels em movimento -->
+    <canvas id="particulas-cyber"></canvas>
+
+    <!-- Menu de Navegação Fixo -->
     <nav class="menu-superior">
         <ul>
             <li><a href="#inicio">Início</a></li>
@@ -114,5 +117,69 @@
         </div>
     </footer>
 
-</body>
-</html>
+<!-- Efeito cibernético de partículas (pixels) em movimento -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber');
+        const ctx = canvas.getContext('2d');
+
+        // Garante que a tela do efeito preencha o navegador
+        function ajustarTamanho() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        ajustarTamanho();
+        window.addEventListener('resize', ajustarTamanho);
+
+        // Configuração dos Pontos (Pixels)
+        const particulas = [];
+        const numeroDePontos = 80; // Quantidade de pontos na tela
+
+        class PixelParticula {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1; // Tamanho do pixel (1 a 3px)
+                this.speedY = Math.random() * 0.5 + 0.1; // Velocidade lenta de descida
+                this.speedX = (Math.random() - 0.5) * 0.2; // Pequeno desvio lateral
+                this.alpha = Math.random() * 0.5 + 0.1; // Transparência individual (brilho)
+            }
+
+            atualizar() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+
+                // Se o ponto sumir no final da tela, ele volta para o topo
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                    this.x = Math.random() * canvas.width;
+                }
+                // Se escapar pelas laterais, volta
+                if (this.x > canvas.width || this.x < 0) {
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            desenhar() {
+                // Desenha os pontos na nova cor Verde Militar (Olive Drab)
+                ctx.fillStyle = `rgba(107, 142, 35, ${this.alpha})`;
+                ctx.fillRect(this.x, this.y, this.size, this.size); 
+            }
+        }
+
+        // Inicializa o exército de pontos
+        for (let i = 0; i < numeroDePontos; i++) {
+            particulas.push(new PixelParticula());
+        }
+
+        // Ciclo de Animação (O motor que faz tudo se mover)
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particulas.length; i++) {
+                particulas[i].atualizar();
+                particulas[i].desenhar();
+            }
+            requestAnimationFrame(animar);
+        }
+        animar();
+    </script>

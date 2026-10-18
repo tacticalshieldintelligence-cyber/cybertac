@@ -7,12 +7,13 @@
 
 html {
     scroll-behavior: smooth; 
-    scroll-padding-top: 100px; /* Faz a rolagem parar 100px antes de encostar no topo, preservando a visão do título */
+    scroll-padding-top: 100px;
 }
 
-/* 2. CORPO DA PÁGINA (Fundo escuro com a coruja) */
+/* 2. CORPO DA PÁGINA (Máxima transparência para destacar a coruja) */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('coruja.png.jpeg');
+    /* Reduzimos a sombra sobre a imagem de 0.75 para apenas 0.3 */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('coruja.webp.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,44 +22,62 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* 3. CABEÇALHO */
+/* EFEITO DE PARTÍCULAS EM SEGUNDO PLANO */
+#particulas-cyber {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none; 
+    opacity: 0.6; 
+}
+
+/* 3. CABEÇALHO (Quase invisível) */
 header {
-    background-color: rgba(10, 10, 10, 0.6); 
-    border-bottom: 2px solid #00ff41; 
+    background-color: rgba(5, 5, 5, 0.1); 
+    border-bottom: 2px solid #6b8e23; /* Verde Militar */
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
+    margin-top: 60px;
 }
 
 header h1 {
     color: #ffffff;
     font-size: 2.8rem;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Sombra preta mais forte para o texto não sumir na imagem */
 }
 
 header p {
-    color: #8b949e;
+    color: #6b8e23; /* Verde Militar */
     margin-top: 10px;
     font-size: 1.2rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
-/* 4. CAIXA CENTRAL (Isso vai consertar o alinhamento grudado na esquerda) */
+/* 4. CAIXAS CENTRALIZADAS (Vidro Cristalino) */
 section {
     max-width: 800px;
     margin: 50px auto;
     padding: 30px;
-    background-color: rgba(15, 15, 15, 0.95);
+    background-color: rgba(10, 10, 10, 0.25); /* Fundo super transparente */
+    backdrop-filter: blur(4px); /* Desfoque bem menor para ver a imagem através dele */
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(107, 142, 35, 0.3); /* Borda em Verde Militar translúcido */
     border-radius: 8px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 h2 {
-    color: #00ff41; 
+    color: #6b8e23; /* Verde Militar */
     margin-bottom: 20px;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid rgba(107, 142, 35, 0.2);
     padding-bottom: 10px;
 }
 
@@ -68,18 +87,19 @@ ul {
 }
 
 li {
-    background-color: rgba(20, 20, 20, 0.9);
+    background-color: rgba(20, 20, 20, 0.25);
     margin-bottom: 15px;
     padding: 15px 20px;
-    border-left: 4px solid #00ff41;
+    border-left: 4px solid #6b8e23; /* Verde Militar */
     border-radius: 4px;
+    backdrop-filter: blur(2px);
 }
 
 li strong {
     color: #ffffff;
 }
 
-/* 6. FORMULÁRIO DE CONTATO (Isso vai consertar as caixas brancas) */
+/* 6. FORMULÁRIO DE CONTATO */
 .campo {
     margin-bottom: 20px;
     text-align: left;
@@ -91,33 +111,35 @@ label {
     color: #ffffff;
     font-weight: bold;
     font-size: 0.95rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
 input, select, textarea {
     width: 100%;
     padding: 12px;
-    background-color: #0d1117;
-    border: 1px solid #30363d;
+    background-color: rgba(13, 17, 23, 0.4); 
+    border: 1px solid rgba(107, 142, 35, 0.4); 
     border-radius: 4px;
-    color: #c9d1d9;
+    color: #ffffff;
     font-family: inherit;
     font-size: 1rem;
+    backdrop-filter: blur(2px);
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #00ff41;
-    box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    border-color: #6b8e23;
+    box-shadow: 0 0 10px rgba(107, 142, 35, 0.4);
 }
 
-/* 7. BOTÃO HACKER TÁTICO */
+/* 7. BOTÃO TÁTICO MILITAR */
 .btn-tatico {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: transparent; 
-    color: #00ff41; 
-    border: 2px solid #00ff41; 
+    background-color: rgba(107, 142, 35, 0.1); 
+    color: #6b8e23; 
+    border: 2px solid #6b8e23; 
     border-radius: 4px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -127,65 +149,62 @@ input:focus, select:focus, textarea:focus {
 }
 
 .btn-tatico:hover {
-    background-color: #00ff41; 
-    color: #000000; 
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); 
+    background-color: #6b8e23; 
+    color: #ffffff; /* Letra branca para contrastar melhor com o verde escuro */
+    box-shadow: 0 0 15px rgba(107, 142, 35, 0.5); 
 }
 
 /* 8. RODAPÉ (FOOTER) */
 footer {
     text-align: center;
-    padding: 30px 20px;
-    background-color: rgba(10, 10, 10, 0.8); /* Fundo bem escuro */
-    border-top: 1px solid #00ff41; /* Linha verde sutil no topo do rodapé */
+    padding: 40px 20px;
+    background-color: rgba(5, 5, 5, 0.4); 
+    border-top: 1px solid rgba(107, 142, 35, 0.4); 
     margin-top: 50px;
     color: #8b949e;
     font-size: 0.9rem;
+    backdrop-filter: blur(4px);
 }
 
 .redes-sociais {
     margin-top: 15px;
 }
 
-/* Estilo padrão dos links */
 .redes-sociais a {
-    color: #00ff41;
-    text-decoration: none; /* Tira o sublinhado feio padrão dos links */
+    color: #6b8e23;
+    text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
     letter-spacing: 1px;
     transition: all 0.3s ease;
 }
 
-/* Efeito ao passar o mouse por cima do link */
 .redes-sociais a:hover {
-    color: #ffffff; /* Letra fica branca */
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8); /* Ganha um brilho verde neon */
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(107, 142, 35, 0.8);
 }
 
-/* Cor da barrinha que separa os links */
 .separador {
-    color: #30363d;
+    color: rgba(107, 142, 35, 0.3);
 }
 
 /* 9. MENU DE NAVEGAÇÃO */
 .menu-superior {
-    background-color: rgba(10, 10, 10, 0.95);
-    border-bottom: 1px solid #00ff41;
-    position: fixed; /* Prende o menu permanentemente no topo da tela */
+    background-color: rgba(5, 5, 5, 0.8); /* Mantemos um pouco escuro para a leitura não sumir quando rolar pela coruja */
+    border-bottom: 1px solid #6b8e23;
+    position: fixed; 
     top: 0;
     width: 100%;
-    z-index: 1000; /* Garante que o menu fique por cima de todas as imagens e textos */
+    z-index: 1000; 
 }
 
 .menu-superior ul {
     display: flex;
-    justify-content: center; /* Centraliza os links */
+    justify-content: center; 
     list-style: none;
     padding: 15px 0;
 }
 
-/* Precisamos limpar o design padrão que usamos na lista de serviços para não afetar o menu */
 .menu-superior li {
     background-color: transparent;
     border: none;
@@ -204,19 +223,12 @@ footer {
 }
 
 .menu-superior a:hover {
-    color: #00ff41;
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+    color: #6b8e23;
+    text-shadow: 0 0 10px rgba(107, 142, 35, 0.5);
 }
 
-/* Como o menu fica "flutuando" no topo, precisamos dar um espaço no cabeçalho para ele não esconder o título */
-header {
-    margin-top: 60px; 
-}
-
-/* 10. RESPONSIVIDADE TÁTICA (Telas de Celulares e Tablets) */
+/* 10. RESPONSIVIDADE */
 @media (max-width: 768px) {
-    
-    /* 1. Ajuste do Título: Reduzimos o tamanho da fonte para caber na tela */
     header h1 {
         font-size: 2rem;
     }
@@ -225,7 +237,6 @@ header {
         font-size: 1rem;
     }
 
-    /* 2. Ajuste do Menu: Permite que os links desçam para a linha de baixo se não couberem */
     .menu-superior ul {
         flex-wrap: wrap; 
         padding: 10px 0;
@@ -239,13 +250,11 @@ header {
         font-size: 0.9rem;
     }
 
-    /* 3. Ajuste das Caixas (Serviços e Formulário): Reduz margens para não espremer o texto */
     section {
         margin: 30px 15px; 
         padding: 20px 15px;
     }
 
-    /* 4. Ajuste do Freio de Rolagem: Como o menu no celular pode ocupar duas linhas, o freio precisa ser maior */
     html {
         scroll-padding-top: 140px; 
     }
