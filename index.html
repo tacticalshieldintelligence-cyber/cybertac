@@ -7,101 +7,86 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <!-- Tela para o efeito de pontos/pixels em movimento -->
     <canvas id="particulas-cyber"></canvas>
 
-    <!-- Menu de Navegação Fixo -->
-    <nav class="menu-superior">
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#quem-somos">Quem Somos</a></li>
-            <li><a href="#avaliacao">Avaliação Tática</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+<!-- MENU DE NAVEGAÇÃO TÁTICO FIXO -->
+    <nav class="menu-topo">
+        <a href="#inicio">INÍCIO</a>
+        <a href="#servicos">SERVIÇOS</a>
+        <a href="#quem-somos">QUEM SOMOS</a>
+        <a href="#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="#contato">CONTATO</a>
     </nav>
 
-    <!-- Cabeçalho do Site -->
+    <!-- Cabeçalho Fixo e Tático -->
     <header id="inicio">
         <h1>Cybertac Soluções & Consultoria</h1>
-        <p>Inteligência Tática, Detecção e Proteção de Ativos Críticos</p>
-    <header>
+        <p>Estratégia, Defesa e Inteligência Cibernética</p>
+    </header>
 
-    <!-- Seção de Serviços -->
+<!-- SEÇÃO DE SERVIÇOS EXPANDIDA -->
     <section id="servicos">
-        <h2>Nossas Áreas de Atuação</h2>
+        <h2>Catálogo de Serviços</h2>
         <ul>
-            <li><strong>Detecção e Monitoramento:</strong> Análise de anomalias em tempo real.</li>
-            <li><strong>Testes de Intrusão (Pentest):</strong> Avaliação de superfícies de ataque.</li>
-            <li><strong>Forense e Resposta a Incidentes:</strong> Contenção imediata e perícia digital.</li>
-            <li><strong>Inteligência de Ameaças (OSINT):</strong> Monitoramento de vazamentos e exposição de dados.</li>
+            <li><strong>🔍 OSINT (Inteligência de Fontes Abertas):</strong> Mapeamento de exposição de dados e análise de vínculos de ameaças.</li>
+            <li><strong>⚔️ Pentest (Teste de Intrusão):</strong> Simulação de ataques reais para identificar e fechar brechas na sua rede.</li>
+            <li><strong>🛡️ Resposta a Incidentes:</strong> Contenção imediata de invasões e recuperação segura de ambientes comprometidos.</li>
+            <li><strong>📊 Consultoria de Risco:</strong> Adequação de infraestrutura e criação de Matrizes de Risco (DLP, Firewall).</li>
         </ul>
     </section>
 
-    <!-- Seção Quem Somos -->
-    <section id="quem-somos">
-        <h2>Nossa Origem Tática</h2>
-        <p style="color: #8b949e; margin-bottom: 25px;">
-            A Cybertac nasceu da união entre a disciplina operacional e a vanguarda da defesa tecnológica.
-        </p>
-        
-        <p style="margin-bottom: 15px;">
-            Fundada por <strong>Gabriel Dias</strong> e <strong>Ramon Rocha</strong>, profissionais com sólida experiência em segurança pública e operações táticas, nossa missão é aplicar o rigor e a precisão das forças de inteligência diretamente na proteção de ativos digitais corporativos.
-        </p>
-        
-        <p style="margin-bottom: 25px;">
-            Com raízes profundas na doutrina policial militar e métodos avançados de inteligência estratégica, nossa equipe atua com a mesma resiliência exigida em missões de alto risco no mundo físico. Trazemos o conceito de "defesa em profundidade" e resposta cirúrgica a incidentes para blindar a sua infraestrutura contra as ameaças cibernéticas mais modernas.
-        </p>
+    <!-- SEÇÃO QUEM SOMOS -->
+   <section id="quem-somos">
+        <h2>Nossa Origem</h2>
+        <div class="bloco-origem">
+            <p class="destaque-origem">A Cybertac nasceu na linha de frente das operações táticas.</p>
+            <p>Fundada por especialistas em defesa cibernética, nossa empresa une o rigor e a disciplina inegociáveis da segurança digital à vanguarda da tecnologia da informação.</p>
+            <p>Nossa missão não é apenas instalar controles, mas aplicar inteligência especializada e estratégias avançadas de Defesa em Profundidade para proteger o seu patrimônio digital. Compreendemos a mentalidade do adversário para blindar a sua infraestrutura corporativa com a mesma precisão operacional e seriedade exigidas em operações de alto risco.</p>
+        </div>
+    </section>
 
-        <!-- Lista de Diferenciais da Equipe -->
-        <ul>
-            <li><strong>Inteligência Antecipativa:</strong> Metodologias OSINT e monitoramento proativo baseados em operações reais.</li>
-            <li><strong>Rigor Tático:</strong> Resposta a incidentes estruturada, focada na contenção imediata e preservação de evidências.</li>
-            <li><strong>Autonomia Técnica:</strong> Profundo conhecimento em arquitetura de redes, gestão de riscos e ferramentas avançadas de segurança.</li>
-        </ul>
-    <section>
-
-    <!-- Seção de Contato -->
+    <!-- FORMULÁRIO DE AVALIAÇÃO TÁTICA MELHORADO -->
     <section id="avaliacao">
-        <h2>Solicite uma Avaliação Tática</h2>
-        <p style="color: #8b949e; margin-bottom: 25px;">Entre em contato com os nossos especialistas para blindar a infraestrutura da sua organização.</p>
-        
-        <form action="https://formsubmit.co/tacticalshieldintelligence@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Novo Contato Tático - Site Cybertac">
-            <input type="hidden" name="_captcha" value="false">
-            <!-- Caixa para Nome ou Empresa -->
+        <h2>Avaliação Tática (Solicitação de Orçamento)</h2>
+        <form id="form-contato" action="https://formspree.io/f/xrpedrvo" method="POST">
             <div class="campo">
                 <label for="nome">Nome ou Organização:</label>
-                <input type="text" id="nome" name="nome" placeholder="Ex: Corporação Alpha" required>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="campo">
+                <label for="email">E-mail de Contato Seguro:</label>
+                <input type="email" id="email" name="email" required>
             </div>
             
-            <!-- Caixa para E-mail Corporativo -->
+            <!-- Novos campos estratégicos que adicionamos -->
             <div class="campo">
-                <label for="email">E-mail Corporativo:</label>
-                <input type="email" id="email" name="email" placeholder="contato@empresa.com.br" required>
-            </div>
-
-            <!-- Menu de Seleção do Serviço -->
-            <div class="campo">
-                <label for="servico">Foco da Operação:</label>
-                <select id="servico" name="servico">
-                    <option value="monitoramento">Detecção e Monitoramento (SOC)</option>
-                    <option value="pentest">Testes de Intrusão (Pentest)</option>
-                    <option value="osint">Inteligência de Ameaças (OSINT)</option>
-                    <option value="consultoria">Consultoria em Defesa Cibernética</option>
+                <label for="rede">Tamanho da Rede (Aproximado):</label>
+                <select id="rede" name="rede">
+                    <option value="pequena">Pequena (1 a 20 dispositivos)</option>
+                    <option value="media">Média (21 a 100 dispositivos)</option>
+                    <option value="grande">Grande (Mais de 100 dispositivos)</option>
+                    <option value="nuvem">Apenas Infraestrutura em Nuvem</option>
                 </select>
             </div>
-
-            <!-- Caixa para a Mensagem -->
             <div class="campo">
-                <label for="mensagem">Descreva o cenário ou vulnerabilidade:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Detalhe a sua necessidade de forma segura..." required></textarea>
+                <label for="incidente">Motivo da Solicitação:</label>
+                <select id="incidente" name="incidente">
+                    <option value="prevencao">Auditoria e Prevenção (Pentest)</option>
+                    <option value="vazamento">Suspeita de Vazamento de Dados</option>
+                    <option value="invasao">Incidente Ativo (Invasão em andamento)</option>
+                    <option value="osint">Investigação e OSINT</option>
+                </select>
             </div>
-
-            <!-- Botão de Envio -->
-            <button type="submit" class="btn-tatico">Enviar Solicitação</button>
+            
+            <div class="campo">
+                <label for="mensagem">Detalhes Adicionais (Não inclua senhas):</label>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-tatico">Solicitar Análise</button>
         </form>
-    <section>
+    </section>
 
     <!-- Rodapé do Site e Contatos Rápidos -->
     <footer id="contato">
@@ -194,4 +179,5 @@
             requestAnimationFrame(animar);
         }
         animar();
+
     </script>

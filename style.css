@@ -1,3 +1,8 @@
+/* ATIVA O DESLIZAMENTO SUAVE NA PÁGINA INTEIRA */
+html {
+    scroll-behavior: smooth;
+}
+
 /* 1. RESET BÁSICO E ROLAGEM SUAVE */
 * {
     margin: 0;
@@ -40,7 +45,6 @@ body {
 /* 3. CABEÇALHO */
 header {
     background-color: rgba(5, 5, 5, 0.1); 
-    border-bottom: 2px solid #00d2ff; /* Azul Elétrico */
     text-align: center;
     padding: 80px 20px;
     margin-top: 60px;
@@ -54,10 +58,12 @@ header h1 {
 }
 
 header p {
-    color: #00d2ff; /* Azul Elétrico */
-    margin-top: 10px;
+    color: #e0e6ed !important; /* Branco prateado para excelente legibilidade */
     font-size: 1.2rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    margin-top: 10px;
+    /* Adiciona uma sombra preta atrás do texto para descolar ele da imagem de fundo */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9) !important; 
+    font-weight: 500;
 }
 
 /* 4. CAIXAS CENTRALIZADAS */
@@ -251,4 +257,116 @@ footer {
     html {
         scroll-padding-top: 140px; 
     }
+}
+
+/* CORREÇÃO DO FUNDO BRANCO EM CELULARES */
+@media (max-width: 768px) {
+    body {
+        /* Desliga o fundo fixo apenas no celular para a coruja voltar a aparecer */
+        background-attachment: scroll !important;
+    }
+}
+
+/* 11. SEÇÃO QUEM SOMOS (TÁTICA E TEXTUAL) */
+#quem-somos {
+    text-align: center;
+}
+
+.bloco-origem {
+    background-color: rgba(20, 20, 20, 0.7); /* Fundo escuro como vidro */
+    border-left: 4px solid #00d2ff; /* Linhas azuis laterais para foco */
+    border-right: 4px solid #00d2ff;
+    border-radius: 8px;
+    padding: 40px;
+    max-width: 800px; /* Não deixa o texto esticar demais na tela */
+    margin: 0 auto; /* Centraliza a caixa na tela */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1); /* Brilho tático sutil */
+    transition: box-shadow 0.3s ease;
+}
+
+.bloco-origem:hover {
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3); /* Acende ao passar o mouse */
+}
+
+.destaque-origem {
+    color: #00d2ff; /* Azul Elétrico */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bloco-origem p {
+    color: #c9d1d9;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify; /* Deixa o texto retinho nos dois lados */
+}
+
+/* ESTILIZAÇÃO COMPATÍVEL PARA CAIXAS DE SELEÇÃO (SELECT) */
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(10, 15, 25, 0.9) !important; /* Fundo escuro e opaco para não conflitar */
+    border: 1.5px solid rgba(0, 210, 255, 0.4) !important; /* Borda no Azul Elétrico sutil */
+    color: #e0e6ed !important; /* Texto em tom claro */
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Remove a setinha nativa e sem graça do Windows/Navegador */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Coloca uma setinha customizada em azul */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300d2ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 14px !important;
+    padding-right: 40px !important; /* Espaço para a nova seta */
+}
+
+/* Efeito ao focar nas opções */
+select:focus {
+    border-color: #00d2ff !important; /* Acende no azul ativo ao clicar */
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.4) !important;
+}
+
+/* Ajusta as opções internas quando abertas */
+select option {
+    background-color: #0d1117 !important; /* Fundo escuro igual ao site */
+    color: #ffffff !important; /* Texto claro */
+}
+/* ESTILIZAÇÃO DO MENU DE NAVEGAÇÃO */
+.menu-topo {
+    background-color: rgba(5, 5, 5, 0.95); /* Fundo quase totalmente preto e levemente translúcido */
+    padding: 20px 0;
+    text-align: center;
+    position: sticky; /* Essa é a mágica que prende o menu no topo ao rolar a tela */
+    top: 0;
+    z-index: 9999; /* Garante que o menu passe por cima de tudo e não fique escondido */
+    border-bottom: 1px solid rgba(0, 210, 255, 0.3); /* Linha divisória tática */
+    backdrop-filter: blur(5px);
+}
+
+.menu-topo a {
+    color: #e0e6ed; /* Branco prateado para leitura fácil */
+    text-decoration: none; /* Tira o sublinhado padrão de links */
+    margin: 0 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse (Blue Team Hover) */
+.menu-topo a:hover {
+    color: #00d2ff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); /* Letra acende em azul */
 }
