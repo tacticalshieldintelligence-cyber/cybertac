@@ -259,14 +259,6 @@ footer {
     }
 }
 
-/* CORREÇÃO DO FUNDO BRANCO EM CELULARES */
-@media (max-width: 768px) {
-    body {
-        /* Desliga o fundo fixo apenas no celular para a coruja voltar a aparecer */
-        background-attachment: scroll !important;
-    }
-}
-
 /* 11. SEÇÃO QUEM SOMOS (TÁTICA E TEXTUAL) */
 #quem-somos {
     text-align: center;
@@ -441,4 +433,60 @@ select option {
     background-color: rgba(0, 210, 255, 0.15); /* Fica mais forte ao passar o mouse */
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); /* Brilho tático */
     transform: translateY(-2px); /* Efeito de elevação sutil */
+}
+
+13. ADAPTAÇÃO TÁTICA PARA CELULARES (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Corrige a quebra da imagem de fundo */
+    body {
+        background-attachment: scroll !important;
+    }
+
+    /* 2. Reduz o tamanho do Título para não vazar da tela */
+    header {
+        padding: 60px 20px;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+    header p {
+        font-size: 1rem;
+    }
+
+    /* 3. Reorganiza o Menu (Um botão embaixo do outro) */
+    .menu-topo {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        position: relative; /* Solta o menu do topo apenas no celular para economizar espaço de tela */
+    }
+    .menu-topo a {
+        margin: 0;
+        display: block;
+        padding: 10px;
+    }
+    .btn-area-cliente {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+
+    /* 4. Ajusta o bloco de Dossiê (Quem Somos) */
+    .bloco-origem {
+        padding: 20px;
+        margin: 0 15px; /* Evita que o texto encoste na borda do celular */
+    }
+
+    /* 5. Ajusta espaçamentos gerais e impede o Zoom automático do iPhone no formulário */
+    section {
+        padding: 40px 15px;
+    }
+    input, select, textarea {
+        font-size: 16px !important; /* O tamanho 16px exato impede o iOS de dar zoom na tela ao digitar */
+    }
+    .caixa-login {
+        padding: 30px 20px;
+        margin: 20px;
+    }
 }
