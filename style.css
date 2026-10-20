@@ -12,17 +12,13 @@ html {
 
 /* 2. CORPO DA PÁGINA */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('coruja.webp.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     color: #c9d1d9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    background-color: #050a15; /* Cor tática de segurança */
 }
 
 /* EFEITO DE PARTÍCULAS EM SEGUNDO PLANO */
@@ -415,5 +411,31 @@ select option {
     .caixa-login {
         padding: 30px 20px;
         margin: 20px;
+    }
+}
+
+/* Camada de suporte de imagem para computadores e telemóveis */
+.fundo-fixo-ios {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Carrega a imagem da coruja com o escurecimento ideal */
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('coruja.webp.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2; /* Fica atrás de todo o conteúdo e das partículas */
+    pointer-events: none; /* Garante que não atrapalha os cliques do utilizador */
+}
+
+/* Garante que o fundo continua a rolar de forma leve no telemóvel */
+@media (max-width: 768px) {
+    .fundo-fixo-ios {
+        /* No telemóvel, transformamos o comportamento para scroll para não sobrecarregar a memória do telemóvel e forçar a imagem a aparecer */
+        position: absolute;
+        height: 100%;
+        background-attachment: scroll !important;
     }
 }
