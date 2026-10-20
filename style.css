@@ -370,3 +370,75 @@ select option {
     color: #00d2ff;
     text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); /* Letra acende em azul */
 }
+
+/* 12. PORTAL DE INTELIGÊNCIA (TELA DE LOGIN) */
+.fundo-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa a tela inteira */
+    background-color: #050a15;
+    background-image: radial-gradient(circle at center, #0a1128 0%, #02040a 100%);
+    margin: 0;
+}
+
+.caixa-login {
+    background-color: rgba(10, 15, 25, 0.85);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-top: 4px solid #00d2ff;
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.icone-seguranca {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.caixa-login h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.caixa-login p {
+    color: #8b949e;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.link-voltar {
+    display: inline-block;
+    margin-top: 25px;
+    color: #8b949e;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.link-voltar:hover {
+    color: #00d2ff;
+}
+
+/* BOTÃO DE ÁREA DO CLIENTE (DESTAQUE NO MENU) */
+.btn-area-cliente {
+    border: 1px solid #00d2ff; /* Cria uma moldura azul */
+    padding: 8px 15px !important; /* Dá um espaço interno para parecer um botão */
+    border-radius: 4px;
+    margin-left: 20px !important; /* Empurra o botão um pouco para a direita, separando dos outros links */
+    background-color: rgba(0, 210, 255, 0.05); /* Fundo levemente azulado */
+    transition: all 0.3s ease;
+}
+
+.btn-area-cliente:hover {
+    background-color: rgba(0, 210, 255, 0.15); /* Fica mais forte ao passar o mouse */
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); /* Brilho tático */
+    transform: translateY(-2px); /* Efeito de elevação sutil */
+}
