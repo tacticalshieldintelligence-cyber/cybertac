@@ -361,9 +361,16 @@ select option {
    13. ADAPTAÇÃO TÁTICA PARA CELULARES (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
+    /* 1. Blindagem contra o bug de fundo branco do iPhone (iOS) */
     body {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('coruja.webp.jpeg') !important;
         background-attachment: scroll !important;
+        background-position: center !important;
+        background-size: cover !important;
+        background-color: #050a15 !important;
     }
+
+    /* 2. Reduz o tamanho do Título para não vazar da tela */
     header {
         padding: 60px 20px;
     }
@@ -373,6 +380,8 @@ select option {
     header p {
         font-size: 1rem;
     }
+
+    /* 3. Reorganiza o Menu (Um botão embaixo do outro) */
     .menu-topo {
         display: flex;
         flex-direction: column;
@@ -389,10 +398,14 @@ select option {
         margin-left: 0 !important;
         margin-top: 10px;
     }
+
+    /* 4. Ajusta o bloco de Dossiê (Quem Somos) */
     .bloco-origem {
         padding: 20px;
         margin: 0 15px; 
     }
+
+    /* 5. Ajusta espaçamentos gerais e impede o Zoom automático do iPhone no formulário */
     section {
         padding: 40px 15px;
     }
