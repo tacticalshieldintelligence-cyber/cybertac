@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise: OSINT e Mapeamento - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html" style="color: #00d2ff;">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff; font-size: 2rem;">OSINT e Análise de Vínculos</h1>
+        <p>Inteligência Aplicada ao Mapeamento Proativo de Ameaças Cibernéticas</p>
+    </header>
+
+    <section id="conteudo-artigo" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        
+        <a href="doutrina.html" style="color: #8b949e; text-decoration: none; font-size: 0.9rem;">&laquo; Voltar para Doutrina</a>
+
+        <div class="bloco-origem" style="margin-top: 20px; text-align: left; padding: 40px; line-height: 1.8;">
+            
+            <p style="color: #c9d1d9; font-size: 1.1rem; margin-bottom: 25px;">
+                A superfície de ataque de uma organização estende-se muito além dos seus firewalls e routers físicos. Identidades corporativas, infraestruturas expostas e fugas de credenciais formam um rasto digital que adversários utilizam para planear incursões. A disciplina de <strong>Open-Source Intelligence (OSINT)</strong> converte estes dados dispersos em inteligência acionável.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">1. Reconhecimento Contínuo do Perímetro Externo</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                O primeiro passo na metodologia investigativa é o mapeamento dos ativos. Através da recolha passiva de dados estruturados e não estruturados, identificamos endereços IPv4/IPv6 esquecidos, subdomínios expostos e repositórios de código mal configurados. Este reconhecimento espelha a exata visibilidade que um atacante possui sobre o seu alvo.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">2. Análise de Vínculos (Link Analysis) e Atores de Ameaça</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Dados brutos não possuem valor sem correlação. A aplicação de frameworks de Análise de Vínculos permite desenhar a rede de interações entre entidades distintas — associando e-mails corporativos comprometidos na Dark Web a infraestruturas de Comando e Controlo (C2) conhecidas. O objetivo é desmascarar a hierarquia e o <em>modus operandi</em> de grupos focados no seu setor.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">3. O Fator Humano e a Engenharia Social</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Operações de inteligência revelam que os adversários frequentemente exploram o perfil digital dos colaboradores. Analisar metadados e a exposição de informações táticas em redes profissionais permite prever vetores de Spear Phishing (ataques direcionados), fechando a brecha humana antes que um funcionário com privilégios de acesso seja comprometido.
+            </p>
+
+            <div style="background: rgba(0, 210, 255, 0.05); border-left: 4px solid #00d2ff; padding: 20px; margin-top: 40px;">
+                <h4 style="color: #ffffff; margin-bottom: 10px;">Obtenha a Vantagem Investigativa</h4>
+                <p style="font-size: 0.9rem; color: #c9d1d9;">A equipa da Cybertac executa varreduras profundas de OSINT para rastrear a exposição da sua marca e das credenciais da sua operação.</p>
+                <a href="index.html#avaliacao" class="btn-tatico" style="display: inline-block; margin-top: 15px; text-decoration: none;">SOLICITAR MAPEAMENTO OSINT</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tela para o efeito de pontos -->
+    <canvas id="particulas-cyber"></canvas>
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato" style="margin-top: 40px;">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script da Malha Cibernética -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber'); const ctx = canvas.getContext('2d');
+        function ajustarTamanho() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        ajustarTamanho(); window.addEventListener('resize', ajustarTamanho);
+        const particulas = []; const numeroDePontos = 50; const distanciaConexao = 160; 
+        class PontoConectado {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 1; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; }
+            atualizar() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width || this.x < 0) this.speedX *= -1; if (this.y > canvas.height || this.y < 0) this.speedY *= -1; }
+            desenhar() { ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+        }
+        for (let i = 0; i < numeroDePontos; i++) { particulas.push(new PontoConectado()); }
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particulas.length; i++) { particulas[i].atualizar(); particulas[i].desenhar(); }
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x; const dy = particulas[i].y - particulas[j].y; const distancia = Math.sqrt(dx * dx + dy * dy);
+                    if (distancia < distanciaConexao) { ctx.beginPath(); const opacidade = 1 - (distancia / distanciaConexao); ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; ctx.lineWidth = 1.2; ctx.moveTo(particulas[i].x, particulas[i].y); ctx.lineTo(particulas[j].x, particulas[j].y); ctx.stroke(); }
+                }
+            } requestAnimationFrame(animar);
+        } animar();
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise: Dupla Extorsão - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html" style="color: #00d2ff;">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff; font-size: 2rem;">Anatomia da Dupla Extorsão</h1>
+        <p>Ransomware em Infraestruturas Críticas e o Framework MITRE ATT&CK</p>
+    </header>
+
+    <section id="conteudo-artigo" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        
+        <a href="doutrina.html" style="color: #8b949e; text-decoration: none; font-size: 0.9rem;">&laquo; Voltar para Doutrina</a>
+
+        <div class="bloco-origem" style="margin-top: 20px; text-align: left; padding: 40px; line-height: 1.8;">
+            
+            <p style="color: #c9d1d9; font-size: 1.1rem; margin-bottom: 25px;">
+                O modelo tradicional de ransomware, focado exclusivamente na negação de acesso através da criptografia, tornou-se obsoleto. Atores de ameaça modernos operam sob a doutrina da <strong>Dupla Extorsão</strong>: exfiltrar os dados sensíveis antes de bloquear os sistemas, utilizando a ameaça de vazamento público como principal alavanca financeira.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">1. Mapeamento Comportamental (MITRE ATT&CK)</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Para neutralizar uma operação de extorsão, é imperativo compreender a cadeia de ataque. Analisando as Táticas, Técnicas e Procedimentos (TTPs) através da matriz MITRE ATT&CK, identificamos que o vetor de <em>Acesso Inicial</em> geralmente ocorre via credenciais comprometidas em serviços expostos, como VPNs mal configuradas ou RDP aberto para a internet.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">2. Evasão de Defesas e Estabelecimento de C2</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Uma vez dentro do perímetro, o adversário não executa o ransomware de imediato. A fase de <em>Movimentação Lateral</em> e <em>Evasão de Defesas</em> pode durar semanas. Ferramentas de administração legítimas (Living off the Land) são utilizadas para desativar antivírus e estabelecer canais de Comando e Controlo (C2) invisíveis aos sistemas de monitoramento padrão (IDS/IPS).
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">3. A Fase Crítica: Exfiltração Silenciosa</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Antes do impacto visual da criptografia, ocorre a coleta de dados. É neste ponto que controles estritos de Prevenção de Perda de Dados (DLP) e monitoramento de tráfego anômalo de saída são a última linha de defesa. Bloquear o vazamento da informação destrói o poder de extorsão do atacante, reduzindo o incidente a um mero problema de restauração de backups.
+            </p>
+
+            <div style="background: rgba(0, 210, 255, 0.05); border-left: 4px solid #00d2ff; padding: 20px; margin-top: 40px;">
+                <h4 style="color: #ffffff; margin-bottom: 10px;">Simule um Ataque Antes que Ele Ocorra</h4>
+                <p style="font-size: 0.9rem; color: #c9d1d9;">A nossa operação de Pentest simula as TTPs de grupos de ransomware reais, testando se a sua equipa consegue detetar a exfiltração a tempo.</p>
+                <a href="index.html#avaliacao" class="btn-tatico" style="display: inline-block; margin-top: 15px; text-decoration: none;">SOLICITAR TESTE DE INTRUSÃO</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tela para o efeito de pontos -->
+    <canvas id="particulas-cyber"></canvas>
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato" style="margin-top: 40px;">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('particulas-cyber'); const ctx = canvas.getContext('2d');
+        function ajustarTamanho() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        ajustarTamanho(); window.addEventListener('resize', ajustarTamanho);
+        const particulas = []; const numeroDePontos = 50; const distanciaConexao = 160; 
+        class PontoConectado {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 1; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; }
+            atualizar() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width || this.x < 0) this.speedX *= -1; if (this.y > canvas.height || this.y < 0) this.speedY *= -1; }
+            desenhar() { ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+        }
+        for (let i = 0; i < numeroDePontos; i++) { particulas.push(new PontoConectado()); }
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particulas.length; i++) { particulas[i].atualizar(); particulas[i].desenhar(); }
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x; const dy = particulas[i].y - particulas[j].y; const distancia = Math.sqrt(dx * dx + dy * dy);
+                    if (distancia < distanciaConexao) { ctx.beginPath(); const opacidade = 1 - (distancia / distanciaConexao); ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; ctx.lineWidth = 1.2; ctx.moveTo(particulas[i].x, particulas[i].y); ctx.lineTo(particulas[j].x, particulas[j].y); ctx.stroke(); }
+                }
+            } requestAnimationFrame(animar);
+        } animar();
+    </script>
+</body>
+</html>

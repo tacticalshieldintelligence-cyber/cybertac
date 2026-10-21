@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise: Defesa em Profundidade - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html" style="color: #00d2ff;">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff; font-size: 2rem;">Defesa em Profundidade</h1>
+        <p>O Papel Fundamental da Segmentação por VLANs na Contenção de Ameaças</p>
+    </header>
+
+    <section id="conteudo-artigo" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        
+        <a href="doutrina.html" style="color: #8b949e; text-decoration: none; font-size: 0.9rem;">&laquo; Voltar para Doutrina</a>
+
+        <div class="bloco-origem" style="margin-top: 20px; text-align: left; padding: 40px; line-height: 1.8;">
+            
+            <p style="color: #c9d1d9; font-size: 1.1rem; margin-bottom: 25px;">
+                O erro mais letal no desenho de uma infraestrutura corporativa é confiar a segurança do perímetro a um único ponto de controlo. Quando uma rede é plana, a queda do firewall de borda significa acesso total. A verdadeira resiliência cibernética exige uma estratégia de <strong>Defesa em Profundidade (Defense in Depth)</strong>.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">1. O Fim das Redes Planas e a Movimentação Lateral</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                Adversários operam explorando o caminho de menor resistência. Se o computador de um utilizador comum for comprometido por um ataque de phishing e partilhar a mesma sub-rede que os servidores de bases de dados, o invasor não precisará de grande esforço para iniciar a sua movimentação lateral. 
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">2. Isolamento Tático através de VLANs</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                A implementação rigorosa de Virtual Local Area Networks (VLANs), aliada a esquemas de endereçamento IPv4 e IPv6 otimizados por VLSM, permite fragmentar o domínio de broadcast. Separar fisicamente ou logicamente o tráfego do departamento financeiro do tráfego da rede de visitantes não é apenas organização, é contenção de danos. Se um setor for infetado por ransomware, a segmentação impede que a criptografia se alastre para as joias da coroa da empresa.
+            </p>
+
+            <h3 style="color: #00d2ff; margin-top: 35px; margin-bottom: 15px;">3. Firewall Stateful e Prevenção de Fugas (DLP)</h3>
+            <p style="color: #c9d1d9; margin-bottom: 20px;">
+                VLANs isoladas requerem roteamento inter-VLAN para comunicarem. É aqui que os filtros de tráfego (Firewalls com inspeção stateful) assumem a linha da frente, garantindo que apenas os pacotes de dados estritamente necessários passem entre os segmentos. Como última camada, soluções de Data Loss Prevention (DLP) fiscalizam o fluxo, garantindo que mesmo que o invasor consiga ler os dados, seja impedido de os exfiltrar para fora da rede.
+            </p>
+
+            <div style="background: rgba(0, 210, 255, 0.05); border-left: 4px solid #00d2ff; padding: 20px; margin-top: 40px;">
+                <h4 style="color: #ffffff; margin-bottom: 10px;">Proteja a Sua Arquitetura</h4>
+                <p style="font-size: 0.9rem; color: #c9d1d9;">A Cybertac é especializada na auditoria e reestruturação de redes corporativas. Avaliamos as suas matrizes de risco, regras de filtragem e arquitetura de VLANs.</p>
+                <a href="index.html#avaliacao" class="btn-tatico" style="display: inline-block; margin-top: 15px; text-decoration: none;">SOLICITAR MAPEAMENTO DE RISCO</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tela para o efeito de pontos -->
+    <canvas id="particulas-cyber"></canvas>
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato" style="margin-top: 40px;">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('particulas-cyber'); const ctx = canvas.getContext('2d');
+        function ajustarTamanho() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        ajustarTamanho(); window.addEventListener('resize', ajustarTamanho);
+        const particulas = []; const numeroDePontos = 50; const distanciaConexao = 160; 
+        class PontoConectado {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 1; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; }
+            atualizar() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width || this.x < 0) this.speedX *= -1; if (this.y > canvas.height || this.y < 0) this.speedY *= -1; }
+            desenhar() { ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+        }
+        for (let i = 0; i < numeroDePontos; i++) { particulas.push(new PontoConectado()); }
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particulas.length; i++) { particulas[i].atualizar(); particulas[i].desenhar(); }
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x; const dy = particulas[i].y - particulas[j].y; const distancia = Math.sqrt(dx * dx + dy * dy);
+                    if (distancia < distanciaConexao) { ctx.beginPath(); const opacidade = 1 - (distancia / distanciaConexao); ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; ctx.lineWidth = 1.2; ctx.moveTo(particulas[i].x, particulas[i].y); ctx.lineTo(particulas[j].x, particulas[j].y); ctx.stroke(); }
+                }
+            } requestAnimationFrame(animar);
+        } animar();
+    </script>
+</body>
+</html>

@@ -17,11 +17,10 @@
     <nav class="menu-topo">
         <a href="#inicio">INÍCIO</a>
         <a href="#servicos">SERVIÇOS</a>
+        <a href="doutrina.html">DOUTRINA</a>
         <a href="#quem-somos">QUEM SOMOS</a>
         <a href="#avaliacao">AVALIAÇÃO TÁTICA</a>
-        
-        <!-- Novo botão apontando para a página de login -->
-        <a href="login.html" class="btn-area-cliente">🛡️ ÁREA DO CLIENTE</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
     </nav>
 
     <!-- Cabeçalho Fixo e Tático -->
@@ -34,10 +33,34 @@
     <section id="servicos">
         <h2>Catálogo de Serviços</h2>
         <ul>
-            <li><strong>🔍 OSINT (Inteligência de Fontes Abertas):</strong> Mapeamento de exposição de dados e análise de vínculos de ameaças.</li>
-            <li><strong>⚔️ Pentest (Teste de Intrusão):</strong> Simulação de ataques reais para identificar e fechar brechas na sua rede.</li>
-            <li><strong>🛡️ Resposta a Incidentes:</strong> Contenção imediata de invasões e recuperação segura de ambientes comprometidos.</li>
-            <li><strong>📊 Consultoria de Risco:</strong> Adequação de infraestrutura e criação de Matrizes de Risco (DLP, Firewall).</li>
+            <li>
+                <strong> OSINT (Inteligência de Fontes Abertas):</strong> Mapeamento de exposição de dados e análise de vínculos de ameaças.
+                <br>
+                <a href="osint.html" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">
+                    [ ACESSAR DOSSIÊ DA OPERAÇÃO ]
+                </a>
+            </li>
+            <li>
+                <strong> Pentest (Teste de Intrusão):</strong> Simulação de ataques reais para identificar e fechar brechas na sua rede.
+                <br>
+                <a href="pentest.html" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">
+                    [ ACESSAR DOSSIÊ DA OPERAÇÃO ]
+                </a>
+            </li>
+            <li>
+                <strong> Resposta a Incidentes:</strong> Contenção imediata de invasões e recuperação segura de ambientes comprometidos.
+                <br>
+                <a href="incidente.html" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">
+                    [ ACESSAR DOSSIÊ DA OPERAÇÃO ]
+                </a>
+            </li>
+            <li>
+                <strong> Consultoria de Risco:</strong> Adequação de infraestrutura e criação de Matrizes de Risco (DLP, Firewall).
+                <br>
+                <a href="consultoria.html" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; transition: all 0.3s ease;">
+                    [ ACESSAR DOSSIÊ DA OPERAÇÃO ]
+                </a>
+            </li>
         </ul>
     </section>
 
@@ -48,6 +71,23 @@
             <p class="destaque-origem">A Cybertac nasceu na linha de frente das operações táticas.</p>
             <p>Fundada por especialistas em defesa cibernética, nossa empresa une o rigor e a disciplina inegociáveis da segurança digital à vanguarda da tecnologia da informação.</p>
             <p>Nossa missão não é apenas instalar controles, mas aplicar inteligência especializada e estratégias avançadas de Defesa em Profundidade para proteger o seu patrimônio digital. Compreendemos a mentalidade do adversário para blindar a sua infraestrutura corporativa com a mesma precisão operacional e seriedade exigidas em operações de alto risco.</p>
+        </div>
+    </section>
+
+    <!-- FERRAMENTA INTERATIVA: TESTADOR DE VULNERABILIDADE DE SENHA -->
+    <section id="ferramentas" style="text-align: center;">
+        <h2>Nível de Vulnerabilidade (Isca de OSINT)</h2>
+        <div class="bloco-origem">
+            <p>Descubra o tempo estimado para que um ataque de força bruta quebre a sua credencial. <br><span style="color: #ffaa00; font-size: 0.85rem;">* Operação 100% local: Nada é enviado ou salvo.</span></p>
+            
+            <input type="password" id="input-senha" placeholder="Digite uma senha para auditar..." style="margin: 20px 0; text-align: center; font-size: 1.2rem; background-color: rgba(0,0,0,0.5);">
+            
+            <!-- Barra de Progresso Tática -->
+            <div style="width: 100%; background-color: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 8px;">
+                <div id="medidor-forca" style="height: 100%; width: 0%; background-color: #ff4444; transition: width 0.4s ease, background-color 0.4s ease;"></div>
+            </div>
+            
+            <p id="texto-forca" style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; color: #8b949e;">Aguardando inserção de dados...</p>
         </div>
     </section>
 
@@ -102,7 +142,7 @@
             <a href="https://instagram.com" target="_blank">Instagram</a>
             <span class="separador">|</span>
             <!-- O comando mailto: faz o computador do cliente abrir o programa de e-mail automaticamente -->
-            <a href="mailto:contato@cybertac.com.br">E-mail Direto</a>
+            <a href="mailto:tacticalshieldintelligence@gmail.com">E-mail Direto</a>
         </div>
     </footer>
 
@@ -184,6 +224,61 @@
         }
         animar();
 
+    </script>
+
+    <!-- Script do Testador de Senhas -->
+    <script>
+        const inputSenha = document.getElementById('input-senha');
+        const medidor = document.getElementById('medidor-forca');
+        const textoForca = document.getElementById('texto-forca');
+
+        inputSenha.addEventListener('input', function() {
+            const senha = inputSenha.value;
+            let forca = 0;
+
+            // Algoritmo de verificação de complexidade
+            if (senha.length > 0) {
+                if (senha.length >= 8) forca += 1; // Ponto por tamanho mínimo
+                if (senha.length >= 12) forca += 1; // Ponto por tamanho seguro
+                if (/[A-Z]/.test(senha)) forca += 1; // Letra maiúscula
+                if (/[0-9]/.test(senha)) forca += 1; // Números
+                if (/[^A-Za-z0-9]/.test(senha)) forca += 1; // Caracteres especiais (!@#$)
+            }
+
+            // Resposta visual do sistema com base na força (0 a 5)
+            switch(forca) {
+                case 0:
+                    medidor.style.width = '0%';
+                    textoForca.textContent = 'Aguardando inserção de dados...';
+                    textoForca.style.color = '#8b949e';
+                    break;
+                case 1:
+                case 2:
+                    medidor.style.width = '25%';
+                    medidor.style.backgroundColor = '#ff4444'; // Vermelho
+                    textoForca.textContent = 'CRÍTICA: Quebrada em milissegundos por força bruta.';
+                    textoForca.style.color = '#ff4444';
+                    break;
+                case 3:
+                    medidor.style.width = '50%';
+                    medidor.style.backgroundColor = '#ffaa00'; // Amarelo
+                    textoForca.textContent = 'VULNERÁVEL: Quebrada em poucas horas via Dicionário.';
+                    textoForca.style.color = '#ffaa00';
+                    break;
+                case 4:
+                    medidor.style.width = '75%';
+                    medidor.style.backgroundColor = '#00d2ff'; // Azul Elétrico
+                    textoForca.textContent = 'FORTE: Resistente a ataques automatizados comuns.';
+                    textoForca.style.color = '#00d2ff';
+                    break;
+                case 5:
+                    medidor.style.width = '100%';
+                    medidor.style.backgroundColor = '#00ff88'; // Verde Neon
+                    textoForca.textContent = 'BLINDADA: Padrão de segurança de nível militar.';
+                    textoForca.style.color = '#00ff88';
+                    break;
+            }
+        });
     </script>
     </body>
 </html>

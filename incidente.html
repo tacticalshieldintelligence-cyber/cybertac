@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resposta a Incidentes - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Tela para o efeito de pontos/pixels em movimento -->
+    <canvas id="particulas-cyber"></canvas>
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff;">Resposta a Incidentes (DFIR)</h1>
+        <p>Contenção Imediata, Investigação Forense e Recuperação</p>
+    </header>
+
+    <section id="detalhes-servico">
+        <h2>Operação de Crise</h2>
+        <div class="bloco-origem">
+            <p>Quando a barreira cai, a velocidade e a precisão da resposta ditam a sobrevivência da operação. Nossa equipe atua sob extrema pressão para isolar ameaças ativas, estancar o vazamento de dados e expulsar o adversário da sua infraestrutura.</p>
+            
+            <h3 style="color: #00d2ff; margin-top: 25px; margin-bottom: 15px; font-size: 1.1rem;">Metodologia Tática:</h3>
+            <ul>
+                <li><strong>Isolamento (Triage):</strong> Contenção imediata de endpoints e servidores comprometidos para impedir a movimentação lateral.</li>
+                <li><strong>Análise Forense:</strong> Investigação profunda para identificar o vetor inicial de comprometimento (Patient Zero).</li>
+                <li><strong>Erradicação:</strong> Limpeza tática do ambiente, removendo backdoors, malwares e persistências do atacante.</li>
+                <li><strong>Restauração Segura:</strong> Retorno das operações com novas regras de bloqueio e monitoramento reforçado.</li>
+            </ul>
+
+            <a href="index.html#avaliacao" class="btn-tatico" style="text-align: center; text-decoration: none; margin-top: 30px;">
+                ACIONAR EQUIPE DE RESPOSTA
+            </a>
+        </div>
+    </section>
+
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Efeito cibernético: Malha de Conexões (Link Analysis) -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber');
+        const ctx = canvas.getContext('2d');
+
+        function ajustarTamanho() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        ajustarTamanho();
+        window.addEventListener('resize', ajustarTamanho);
+
+        const particulas = [];
+        const numeroDePontos = 50; 
+        const distanciaConexao = 160; 
+
+        class PontoConectado {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1; 
+                this.speedX = (Math.random() - 0.5) * 0.5; 
+                this.speedY = (Math.random() - 0.5) * 0.5; 
+            }
+
+            atualizar() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            desenhar() {
+                ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; 
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numeroDePontos; i++) {
+            particulas.push(new PontoConectado());
+        }
+
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particulas.length; i++) {
+                particulas[i].atualizar();
+                particulas[i].desenhar();
+            }
+
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x;
+                    const dy = particulas[i].y - particulas[j].y;
+                    const distancia = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distancia < distanciaConexao) {
+                        ctx.beginPath();
+                        const opacidade = 1 - (distancia / distanciaConexao);
+                        ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; 
+                        ctx.lineWidth = 1.2; 
+                        ctx.moveTo(particulas[i].x, particulas[i].y);
+                        ctx.lineTo(particulas[j].x, particulas[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animar);
+        }
+        animar();
+    </script>
+</body>
+</html>

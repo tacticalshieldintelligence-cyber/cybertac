@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doutrina & Inteligência - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html" style="color: #00d2ff; text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff;">Doutrina & Inteligência</h1>
+        <p>Análises Táticas, Arquitetura de Redes e Boletins de Ameaça</p>
+    </header>
+
+    <section id="artigos" style="max-width: 800px; margin: 0 auto; padding: 20px; background: transparent; border: none; box-shadow: none;">
+
+        <!-- Artigo de Análise de Ameaça -->
+        <div class="bloco-origem" style="margin-bottom: 30px; text-align: left; padding: 30px;">
+            <span style="color: #8b949e; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Relatório de Ameaça • 20 Outubro 2026</span>
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin: 10px 0;">Anatomia da Dupla Extorsão: Ransomware em Infraestruturas Críticas</h3>
+            <p style="font-size: 0.95rem; color: #c9d1d9; margin-bottom: 15px;">A evolução das campanhas de ransomware não visa apenas a criptografia de dados, mas a exfiltração contínua como alavanca de negociação. Analisamos o comportamento de atores de ameaça mapeados no MITRE ATT&CK e os controles necessários para mitigar a movimentação lateral no ambiente corporativo.</p>
+            <a href="artigo-ransomware.html" style="color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease;">[ LER ANÁLISE COMPLETA ] &raquo;</a>        
+        </div>
+
+        <!-- Artigo de Arquitetura e Defesa -->
+        <div class="bloco-origem" style="margin-bottom: 30px; text-align: left; padding: 30px;">
+            <span style="color: #8b949e; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Arquitetura de Defesa • 15 Outubro 2026</span>
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin: 10px 0;">Defesa em Profundidade: O Papel Fundamental da Segmentação por VLANs</h3>
+            <p style="font-size: 0.95rem; color: #c9d1d9; margin-bottom: 15px;">Uma rede plana é um campo aberto para o adversário. Detalhamos como a estruturação lógica de VLANs e sub-redes (VLSM), aliada a regras rigorosas de Firewall stateful, impede a escalada de privilégios e isola incidentes antes que alcancem o banco de dados principal.</p>
+            <a href="artigo-defesa.html" style="color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease;">[ LER ANÁLISE COMPLETA ] &raquo;</a>
+        </div>
+
+        <!-- Artigo de Investigação e OSINT -->
+        <div class="bloco-origem" style="margin-bottom: 30px; text-align: left; padding: 30px;">
+            <span style="color: #8b949e; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Metodologia de Inteligência • 20 Outubro 2026</span>
+            <h3 style="color: #ffffff; font-size: 1.4rem; margin: 10px 0;">OSINT e Análise de Vínculos: O Mapeamento Proativo de Ameaças</h3>
+            <p style="font-size: 0.95rem; color: #c9d1d9; margin-bottom: 15px;">A defesa passiva já não é suficiente. Detalhamos as metodologias de coleta em fontes abertas e a construção de matrizes de análise de vínculos (Link Analysis) para identificar a infraestrutura, a identidade e as conexões de atores de ameaça antes que o ataque seja desferido.</p>
+            <a href="artigo-osint.html" style="color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease;">[ LER ANÁLISE COMPLETA ] &raquo;</a>
+        </div>
+
+    </section>
+
+    <canvas id="particulas-cyber"></canvas>
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script da Malha Cibernética -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber');
+        const ctx = canvas.getContext('2d');
+        function ajustarTamanho() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        ajustarTamanho(); window.addEventListener('resize', ajustarTamanho);
+        const particulas = []; const numeroDePontos = 50; const distanciaConexao = 160; 
+        class PontoConectado {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 1; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; }
+            atualizar() { this.x += this.speedX; this.y += this.speedY; if (this.x > canvas.width || this.x < 0) this.speedX *= -1; if (this.y > canvas.height || this.y < 0) this.speedY *= -1; }
+            desenhar() { ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+        }
+        for (let i = 0; i < numeroDePontos; i++) { particulas.push(new PontoConectado()); }
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particulas.length; i++) { particulas[i].atualizar(); particulas[i].desenhar(); }
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x; const dy = particulas[i].y - particulas[j].y; const distancia = Math.sqrt(dx * dx + dy * dy);
+                    if (distancia < distanciaConexao) {
+                        ctx.beginPath(); const opacidade = 1 - (distancia / distanciaConexao); ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; ctx.lineWidth = 1.2; ctx.moveTo(particulas[i].x, particulas[i].y); ctx.lineTo(particulas[j].x, particulas[j].y); ctx.stroke();
+                    }
+                }
+            } requestAnimationFrame(animar);
+        } animar();
+    </script>
+</body>
+</html>

@@ -8,24 +8,26 @@
 </head>
 <body class="fundo-login">
 
-<div class="caixa-login">
+    <div class="caixa-login">
         <!-- Ícone tático -->
-        <div class="icone-seguranca">🛡️</div>
+        <div class="icone-seguranca"></div>
         <h2>Acesso Restrito</h2>
         
-        <p>A central de inteligência da Cybertac utiliza o protocolo <strong>Server-Side Auth</strong>. Nenhuma credencial é digitada em formulários abertos para impedir interceptações.</p>
+        <p style="margin-bottom: 20px;">Insira sua credencial de acesso para entrar no Centro de Comando tático.</p>
         
-        <div style="background-color: rgba(255, 0, 0, 0.05); border-left: 3px solid #ff3333; padding: 15px; margin-bottom: 25px; text-align: left; font-size: 0.85rem; color: #c9d1d9;">
-            <strong>PROTOCOLO DE SEGURANÇA:</strong> Ao iniciar a conexão abaixo, o servidor exigirá a sua <em>Chave de Descriptografia</em> através do sistema blindado do seu navegador. O acesso é monitorado.
-        </div>
-        
-        <!-- O botão que joga o cliente contra a barreira real do servidor -->
-        <a href="relatorio.html" class="btn-tatico" style="display: block; text-decoration: none; margin: 20px 0; padding: 15px; font-weight: bold; letter-spacing: 1px;">
-            🔒 INICIAR AUTENTICAÇÃO SEGURA
-        </a>
+        <!-- Formulário de Autenticação -->
+        <form id="form-login">
+            <input type="password" id="senha-cliente" placeholder="Chave de Acesso" required style="width: 100%; padding: 15px; margin-bottom: 20px; background-color: rgba(0,0,0,0.5); color: #fff; border: 1px solid #00d2ff; text-align: center; font-size: 1.2rem; box-sizing: border-box;">
+            
+            <button type="submit" class="btn-tatico" style="width: 100%; display: block; border: none; cursor: pointer; padding: 15px; font-weight: bold; letter-spacing: 1px; box-sizing: border-box;">
+                INICIAR AUTENTICAÇÃO
+            </button>
+        </form>
 
-        <a href="index.html" class="link-voltar">← Retornar à Base Principal</a>
+        <a href="index.html" class="link-voltar" style="display: block; margin-top: 25px; text-align: center;">← Retornar à Base Principal</a>
     </div>
 
+    <!-- Ligação com o motor de autenticação -->
+    <script src="auth.js"></script>
 </body>
 </html>

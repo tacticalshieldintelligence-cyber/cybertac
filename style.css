@@ -439,3 +439,35 @@ select option {
         background-attachment: scroll !important;
     }
 }
+
+/* =========================================================
+   AJUSTE TÁTICO: DISPOSITIVOS MÓVEIS EM MODO PAISAGEM
+   ========================================================= */
+@media (max-height: 500px) and (orientation: landscape) {
+    
+    /* Reduz o espaçamento do cabeçalho para não empurrar o conteúdo para fora */
+    header {
+        padding-top: 60px !important;
+        padding-bottom: 15px !important;
+    }
+
+    /* Reduz a altura da janela de logs do SOC para caber na tela horizontal */
+    #janela-logs {
+        height: 150px !important;
+    }
+
+    /* Ajusta a altura do gráfico interativo para evitar distorções */
+    #graficos div {
+        height: 220px !important;
+    }
+
+    /* Compacta o menu de navegação para liberar área útil de leitura */
+    .menu-topo {
+        padding: 10px 0;
+    }
+    
+    .menu-topo a {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+}

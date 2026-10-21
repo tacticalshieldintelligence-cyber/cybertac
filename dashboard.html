@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Comando - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Motor Gráfico Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- MENU INTERNO DA ÁREA RESTRITA -->
+    <nav class="menu-topo">
+        <a href="#resumo">VISÃO GERAL</a>
+        <a href="#relatorios">MEUS DOSSIÊS</a>
+        <a href="#alertas">ALERTAS ATIVOS</a>
+        <!-- Botão de saída que remete para a página inicial -->
+        <a href="index.html" class="btn-area-cliente" style="border-color: #ff4444; color: #ff4444; background-color: rgba(255, 68, 68, 0.1);">🔴 DESCONECTAR</a>
+    </nav>
+
+    <header style="padding-top: 100px; padding-bottom: 40px;">
+        <h1 style="color: #00d2ff; font-size: 2.2rem;">Centro de Comando Tático</h1>
+        <p>Acesso Restrito: <strong style="color: #ffffff;">Alpha Corp. Logística</strong> (ID: 774-BR)</p>
+    </header>
+
+    <!-- PAINÉIS DE INDICADORES DE SEGURANÇA (CSS GRID) -->
+    <section id="resumo" style="max-width: 900px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; background: transparent; border: none; box-shadow: none;">
+        
+        <!-- Indicador 1: Nível de Ameaça -->
+        <div class="bloco-origem" style="padding: 20px; text-align: center;">
+            <h3 style="color: #8b949e; font-size: 0.9rem; text-transform: uppercase;">Nível de Risco Atual</h3>
+            <p style="font-size: 2.5rem; color: #ff4444; font-weight: bold; margin: 10px 0; text-shadow: 0 0 15px rgba(255, 68, 68, 0.5);">ELEVADO</p>
+            <p style="font-size: 0.85rem;">3 Vulnerabilidades Críticas expostas no perímetro.</p>
+        </div>
+
+        <!-- Indicador 2: Última Auditoria -->
+        <div class="bloco-origem" style="padding: 20px; text-align: center;">
+            <h3 style="color: #8b949e; font-size: 0.9rem; text-transform: uppercase;">Última Operação (Pentest)</h3>
+            <p style="font-size: 2.5rem; color: #00d2ff; font-weight: bold; margin: 10px 0; text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);">72%</p>
+            <p style="font-size: 0.85rem;">Taxa de conformidade das regras de Firewall (Stateful).</p>
+        </div>
+
+        <!-- Indicador 3: Sensores IDS/IPS -->
+        <div class="bloco-origem" style="padding: 20px; text-align: center;">
+            <h3 style="color: #8b949e; font-size: 0.9rem; text-transform: uppercase;">Bloqueios (Últimas 24h)</h3>
+            <p style="font-size: 2.5rem; color: #ffffff; font-weight: bold; margin: 10px 0; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);">1.482</p>
+            <p style="font-size: 0.85rem;">Tentativas de intrusão mitigadas na borda IPv4/IPv6.</p>
+        </div>
+
+    </section>
+
+    <!-- PAINEL GRÁFICO DE VULNERABILIDADES -->
+    <section id="graficos" style="max-width: 900px; margin: 20px auto; padding: 20px; background: transparent; border: none; box-shadow: none;">
+        <div class="bloco-origem" style="padding: 30px; text-align: center;">
+            <h3 style="color: #8b949e; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px;">Mapeamento de Ameaças por Severidade</h3>
+            
+            <!-- Contêiner responsivo do Gráfico -->
+            <div style="position: relative; height: 300px; width: 100%; display: flex; justify-content: center;">
+                <canvas id="graficoVulnerabilidades"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMINAL DE MONITORAMENTO DE BORDA (IDS/IPS) -->
+    <section id="logs-sistema" style="max-width: 900px; margin: 20px auto; padding: 20px; background: transparent; border: none; box-shadow: none;">
+        <div class="bloco-origem" style="padding: 0; overflow: hidden; border: 1px solid rgba(0, 210, 255, 0.2);">
+            
+            <!-- Cabeçalho do Terminal -->
+            <div style="background-color: rgba(0, 0, 0, 0.8); padding: 15px 20px; border-bottom: 1px solid rgba(0, 210, 255, 0.2); display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: #8b949e; font-size: 0.85rem; text-transform: uppercase; margin: 0; letter-spacing: 1px;">Terminal IDS/IPS • Logs de Borda</h3>
+                
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <!-- Botão de Simulação de Ataque -->
+                    <button id="btn-simular-ataque" style="background: rgba(255, 68, 68, 0.1); border: 1px solid #ff4444; color: #ff4444; padding: 5px 15px; font-size: 0.75rem; font-weight: bold; cursor: pointer; border-radius: 3px; transition: all 0.3s ease;">
+                        ⚠️ INICIAR SIMULAÇÃO DE INVASÃO
+                    </button>
+                    <span id="status-captura" style="color: #00ff88; font-size: 0.75rem; font-weight: bold; text-shadow: 0 0 5px #00ff88;">● CAPTURA ATIVA</span>
+                </div>
+            </div>
+            
+            <!-- Janela de Registos -->
+            <div id="janela-logs" style="background-color: #050a15; padding: 20px; height: 250px; overflow-y: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; line-height: 1.6;">
+                <p style="color: #8b949e; margin: 5px 0;">[SISTEMA] Inicializando motores de inspeção stateful...</p>
+                <p style="color: #8b949e; margin: 5px 0;">[SISTEMA] Regras de Firewall e matriz MITRE ATT&CK sincronizadas.</p>
+                <!-- O motor JS vai injetar os logs aqui -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LISTAGEM DE DOSSIÊS (RELATÓRIOS PARA DOWNLOAD) -->
+    <section id="relatorios" style="margin-top: 10px;">
+        <h2>Dossiês de Inteligência Liberados</h2>
+        <ul>
+            <li>
+                <strong>📄 Relatório Executivo de Intrusão (Red Team)</strong> - Mapeamento comportamental via MITRE ATT&CK.
+                <br>
+                <a href="#" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; background: rgba(0, 210, 255, 0.1);">[ EXECUTAR DOWNLOAD SEGURO ]</a>
+            </li>
+            <li>
+                <strong>📄 Matriz de Risco Operacional</strong> - Análise de segmentação de VLANs e políticas de Prevenção de Perda de Dados (DLP).
+                <br>
+                <a href="#" style="display: inline-block; margin-top: 10px; color: #00d2ff; text-decoration: none; font-weight: bold; font-size: 0.85rem; border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 10px; border-radius: 4px; background: rgba(0, 210, 255, 0.1);">[ EXECUTAR DOWNLOAD SEGURO ]</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Camada de suporte de imagem e Tela de Partículas -->
+    <canvas id="particulas-cyber"></canvas>
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato" style="margin-top: 80px;">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Ambiente Seguro.</p>
+    </footer>
+
+    <!-- Efeito cibernético: Malha de Conexões -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber');
+        const ctx = canvas.getContext('2d');
+
+        function ajustarTamanho() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        ajustarTamanho();
+        window.addEventListener('resize', ajustarTamanho);
+
+        const particulas = [];
+        const numeroDePontos = 50; 
+        const distanciaConexao = 160; 
+
+        class PontoConectado {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1; 
+                this.speedX = (Math.random() - 0.5) * 0.5; 
+                this.speedY = (Math.random() - 0.5) * 0.5; 
+            }
+            atualizar() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+            desenhar() {
+                ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; 
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numeroDePontos; i++) {
+            particulas.push(new PontoConectado());
+        }
+
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particulas.length; i++) {
+                particulas[i].atualizar();
+                particulas[i].desenhar();
+            }
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x;
+                    const dy = particulas[i].y - particulas[j].y;
+                    const distancia = Math.sqrt(dx * dx + dy * dy);
+                    if (distancia < distanciaConexao) {
+                        ctx.beginPath();
+                        const opacidade = 1 - (distancia / distanciaConexao);
+                        ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; 
+                        ctx.lineWidth = 1.2; 
+                        ctx.moveTo(particulas[i].x, particulas[i].y);
+                        ctx.lineTo(particulas[j].x, particulas[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animar);
+        }
+        animar();
+    </script>
+
+    <!-- Script de Inicialização do Gráfico Tático -->
+    <script>
+        const ctxGrafico = document.getElementById('graficoVulnerabilidades').getContext('2d');
+        const graficoVuln = new Chart(ctxGrafico, {
+            type: 'doughnut',
+            data: {
+                labels: ['Crítica (RCE / Exfiltração)', 'Alta (Escalonamento)', 'Média (Exposição)', 'Baixa (Informativo)'],
+                datasets: [{
+                    // Dados simulados da auditoria
+                    data: [3, 8, 15, 22],
+                    backgroundColor: [
+                        '#ff4444', // Vermelho Tático (Crítico)
+                        '#ffaa00', // Amarelo Alerta (Alto)
+                        '#00d2ff', // Azul Cibernético (Médio)
+                        '#2ea043'  // Verde Seguro (Baixo)
+                    ],
+                    borderColor: '#050a15', // Mesma cor do fundo para dar um corte seco e elegante
+                    borderWidth: 3,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%', // Transforma a pizza num anel futurista
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#c9d1d9',
+                            font: { family: 'Segoe UI', size: 13 },
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Script do Terminal de Monitoramento IDS/IPS -->
+    <script>
+        const janelaLogs = document.getElementById('janela-logs');
+        
+        // Base de dados tática para simular eventos de segurança
+        const eventosSeguranca = [
+            { msg: "BLOQUEIO FIREWALL (Drop) - Regra de Borda IPv4", cor: "#ff4444" }, // Vermelho
+            { msg: "ALERTA IDS - Tentativa de Exploração de Aplicação Web [MITRE T1190]", cor: "#ffaa00" }, // Amarelo
+            { msg: "MITIGAÇÃO IPS - Anomalia de Tráfego / Scan de Portas", cor: "#00d2ff" }, // Azul
+            { msg: "DLP ENGINE - Prevenção de Exfiltração de Dados", cor: "#ffaa00" },
+            { msg: "INSPEÇÃO STATEFUL - Sessão TCP Encerrada via RST", cor: "#8b949e" }, // Cinza
+            { msg: "ALERTA IDS - Autenticação Forjada Detectada [MITRE T1110]", cor: "#ff4444" }
+        ];
+
+        // Função para gerar IPs falsos para o log
+        function gerarIPAleatorio() {
+            return `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
+        }
+
+        function injetarLogTatico() {
+            const dataAtual = new Date();
+            const hora = dataAtual.toLocaleTimeString('pt-BR', { hour12: false });
+            
+            // Escolhe um evento aleatório da nossa matriz
+            const eventoAleatorio = eventosSeguranca[Math.floor(Math.random() * eventosSeguranca.length)];
+            const ipOrigem = gerarIPAleatorio();
+            
+            // Cria a linha de log
+            const novoLog = document.createElement('p');
+            novoLog.style.margin = "5px 0";
+            novoLog.innerHTML = `<span style="color: #8b949e;">[${hora}]</span> <strong style="color: ${eventoAleatorio.cor};">${eventoAleatorio.msg}</strong> <span style="color: #c9d1d9;">SRC: ${ipOrigem}</span>`;
+            
+            // Adiciona à janela e rola automaticamente para baixo
+            janelaLogs.appendChild(novoLog);
+            janelaLogs.scrollTop = janelaLogs.scrollHeight;
+        }
+
+        // Aciona a injeção de logs em intervalos aleatórios (entre 1.5s e 4s) para parecer tráfego real
+        setInterval(injetarLogTatico, Math.floor(Math.random() * 2500) + 1500);
+        // --- MOTOR DO SIMULADOR DE ATAQUE (RED TEAM) ---
+        const btnSimular = document.getElementById('btn-simular-ataque');
+        const statusCaptura = document.getElementById('status-captura');
+
+        btnSimular.addEventListener('click', function() {
+            // 1. Altera o visual do terminal para modo de crise
+            btnSimular.style.display = 'none';
+            statusCaptura.style.color = '#ff4444';
+            statusCaptura.style.textShadow = '0 0 10px #ff4444';
+            statusCaptura.innerHTML = '🔴 SISTEMA COMPROMETIDO';
+            janelaLogs.parentElement.style.borderColor = '#ff4444';
+            janelaLogs.parentElement.style.boxShadow = '0 0 20px rgba(255, 68, 68, 0.3)';
+
+            // 2. Sequestra o gráfico de vulnerabilidades para 100% Crítico
+            graficoVuln.data.datasets[0].data = [100, 0, 0, 0];
+            graficoVuln.update();
+
+            // 3. Sequência de injeção letal de logs
+            const logsDeAtaque = [
+                { msg: "ALERTA CRÍTICO: Firewall de Borda Bypassed [MITRE T1190]", cor: "#ff4444" },
+                { msg: "MOVIMENTAÇÃO LATERAL: Credenciais de Administrador Comprometidas", cor: "#ff4444" },
+                { msg: "FALHA DLP: Exfiltração de 45GB de dados sensíveis para IP offshore", cor: "#ffaa00" },
+                { msg: "RANSOMWARE DEPLOYED: Iniciando processo de criptografia em massa", cor: "#ff4444" },
+                { msg: "ERRO FATAL: Perda total de controlo do perímetro de rede.", cor: "#ff0000" }
+            ];
+
+            let contadorAtaque = 0;
+            const intervaloInvasao = setInterval(() => {
+                if (contadorAtaque < logsDeAtaque.length) {
+                    const hora = new Date().toLocaleTimeString('pt-BR', { hour12: false });
+                    const logCrise = document.createElement('p');
+                    logCrise.style.margin = "5px 0";
+                    logCrise.innerHTML = `<span style="color: #ff4444;">[${hora}]</span> <strong style="color: ${logsDeAtaque[contadorAtaque].cor}; text-shadow: 0 0 5px ${logsDeAtaque[contadorAtaque].cor};">${logsDeAtaque[contadorAtaque].msg}</strong>`;
+                    
+                    janelaLogs.appendChild(logCrise);
+                    janelaLogs.scrollTop = janelaLogs.scrollHeight;
+                    contadorAtaque++;
+                } else {
+                    clearInterval(intervaloInvasao);
+                    // Emite o aviso final de impacto para o cliente
+                    setTimeout(() => {
+                        alert("⚠️ SIMULAÇÃO CONCLUÍDA: A infraestrutura colapsou em segundos.\n\nSem uma arquitetura de Defesa em Profundidade e monitoramento ativo, o seu negócio está exposto. Acione a consultoria da Cybertac para mitigar estes vetores.");
+                    }, 500);
+                }
+            }, 800); // Velocidade de injeção rápida para causar tensão
+        });
+    </script>
+</body>
+</html>

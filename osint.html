@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operação OSINT - Cybertac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Tela para o efeito de pontos/pixels em movimento -->
+    <canvas id="particulas-cyber"></canvas>
+    <!-- MENU DE NAVEGAÇÃO APONTANDO PARA A BASE (INDEX) -->
+    <nav class="menu-topo">
+        <a href="index.html#inicio">INÍCIO</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="doutrina.html">DOUTRINA</a>
+        <a href="index.html#quem-somos">QUEM SOMOS</a>
+        <a href="index.html#avaliacao">AVALIAÇÃO TÁTICA</a>
+        <a href="login.html" class="btn-area-cliente"> ÁREA DO CLIENTE</a>
+    </nav>
+
+    <header>
+        <h1 style="color: #00d2ff;">OSINT & Análise de Vínculos</h1>
+        <p>Inteligência de Fontes Abertas para Mapeamento de Ameaças</p>
+    </header>
+
+    <section id="detalhes-servico">
+        <h2>A Doutrina de Inteligência</h2>
+        <div class="bloco-origem">
+            <p>A exposição de dados sensíveis na internet é o primeiro vetor de ataque utilizado por adversários. Nossa operação de OSINT (Open-Source Intelligence) coleta, correlaciona e analisa informações públicas e de <em>Deep/Dark Web</em> para identificar vulnerabilidades antes que sejam exploradas.</p>
+            
+            <h3 style="color: #00d2ff; margin-top: 25px; margin-bottom: 15px; font-size: 1.1rem;">Metodologia Tática:</h3>
+            <ul>
+                <li><strong>Reconhecimento de Perímetro:</strong> Identificação de ativos digitais expostos (IPs, domínios, e-mails corporativos).</li>
+                <li><strong>Análise de Vínculos (Link Analysis):</strong> Mapeamento da rede de conexões entre ameaças, funcionários e terceiros.</li>
+                <li><strong>Monitoramento de Vazamentos:</strong> Rastreamento contínuo de credenciais corporativas expostas em incidentes de terceiros.</li>
+                <li><strong>Relatório Acionável:</strong> Entrega de inteligência processada com recomendações imediatas de mitigação.</li>
+            </ul>
+
+            <a href="index.html#avaliacao" class="btn-tatico" style="text-align: center; text-decoration: none; margin-top: 30px;">
+                SOLICITAR MAPEAMENTO DA MINHA REDE
+            </a>
+        </div>
+    </section>
+
+    <!-- Camada de suporte de imagem (A coruja do fundo) -->
+    <div class="fundo-fixo-ios"></div>
+
+    <footer id="contato">
+        <p>&copy; 2026 Cybertac Soluções & Consultoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Efeito cibernético: Malha de Conexões (Link Analysis) -->
+    <script>
+        const canvas = document.getElementById('particulas-cyber');
+        const ctx = canvas.getContext('2d');
+
+        function ajustarTamanho() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        ajustarTamanho();
+        window.addEventListener('resize', ajustarTamanho);
+
+        const particulas = [];
+        const numeroDePontos = 50; 
+        const distanciaConexao = 160; 
+
+        class PontoConectado {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1; 
+                this.speedX = (Math.random() - 0.5) * 0.5; 
+                this.speedY = (Math.random() - 0.5) * 0.5; 
+            }
+
+            atualizar() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            desenhar() {
+                ctx.fillStyle = 'rgba(0, 210, 255, 0.8)'; 
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numeroDePontos; i++) {
+            particulas.push(new PontoConectado());
+        }
+
+        function animar() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particulas.length; i++) {
+                particulas[i].atualizar();
+                particulas[i].desenhar();
+            }
+
+            for (let i = 0; i < particulas.length; i++) {
+                for (let j = i + 1; j < particulas.length; j++) {
+                    const dx = particulas[i].x - particulas[j].x;
+                    const dy = particulas[i].y - particulas[j].y;
+                    const distancia = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distancia < distanciaConexao) {
+                        ctx.beginPath();
+                        const opacidade = 1 - (distancia / distanciaConexao);
+                        ctx.strokeStyle = `rgba(0, 210, 255, ${opacidade})`; 
+                        ctx.lineWidth = 1.2; 
+                        ctx.moveTo(particulas[i].x, particulas[i].y);
+                        ctx.lineTo(particulas[j].x, particulas[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animar);
+        }
+        animar();
+    </script>
+</body>
+</html>
