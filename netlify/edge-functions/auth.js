@@ -1,23 +1,24 @@
-export default async (request) => {
-  const authorization = request.headers.get("authorization");
+// Captura o formulário de login do HTML
+const formLogin = document.getElementById('form-login');
 
-  // LISTA DE CREDENCIAIS DE CLIENTES ATIVOS
-  // Lembre-se de sempre colocar a palavra "Basic " antes do código que você gerou
-  const clientesAutorizados = [
-    "Basic Y2xpZW50ZTp0YXRpY28yMDI2", // cliente:tatico2026 (Exemplo antigo)
-    "Basic YWxmYS0wMTpkZWx0YTIwMjY=", // alfa-01:delta2026 (Cliente 1)
-    "Basic YnJhdm8tMDI6b21lZ2E3Nzc="  // bravo-02:omega777 (Cliente 2)
-  ];
+if (formLogin) {
+    formLogin.addEventListener('submit', function(event) {
+        // Interrompe o recarregamento padrão da página
+        event.preventDefault(); 
 
-  // Verifica se o usuário enviou algo E se o código está na nossa lista de autorizados
-  if (!authorization || !clientesAutorizados.includes(authorization)) {
-    return new Response("Acesso Negado: Credenciais operacionais incorretas.", {
-      status: 401,
-      headers: {
-        "WWW-Authenticate": 'Basic realm="Portal de Inteligencia Cybertac"',
-      },
+        // Captura o valor digitado no campo de senha
+        const senhaDigitada = document.getElementById('senha-cliente').value;
+
+        // Credencial de teste tático para a Alpha Corp.
+        const senhaCorreta = "Alpha2026"; 
+
+        if (senhaDigitada === senhaCorreta) {
+            // Acesso Concedido: Redireciona para o Centro de Comando
+            window.location.href = "dashboard.html";
+        } else {
+            // Acesso Negado: Alerta o usuário e limpa o campo
+            alert("ACESSO NEGADO: Credencial inválida ou revogada.");
+            document.getElementById('senha-cliente').value = "";
+        }
     });
-  }
-
-  // Se a credencial for encontrada na lista, o acesso ao relatório é liberado
-};
+}
